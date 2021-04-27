@@ -18,7 +18,10 @@ const App = () => {
             <Avatar style={{width:'200px'}} src={appUser.photoURL} />
             </div>
             <Main>
-              <Text>{appUser.displayName}</Text>
+              <Text>Welcome back</Text>
+              </Main>
+              <Main>
+              <Span>{appUser.displayName}</Span>
             </Main>
             <Info>
               <Text>{appUser.email}</Text>
@@ -26,7 +29,10 @@ const App = () => {
             <Button onClick={handleSignOut}>Sign Out</Button>
           </StyledContainer>
         ) : (
+          <StyledContainer>
+          <Text> Welcome !</Text>  
           <Button onClick={signInWithGoogle}>Sign In</Button>
+          </StyledContainer>
         )}
       </StyledHeader>
       <StyledUserContainer>{message}</StyledUserContainer>
@@ -68,13 +74,57 @@ const StyledContainer = styled.div`
 const Main = styled.div``;
 const Info = styled.div``;
 const Button = styled.button`
-    width:  200px;
-    height:25px;
-    font-size:100%;
+display: inline-block;
+padding: .75rem 1.25rem;
+border-radius: 10rem;
+
+text-transform: uppercase;
+font-size: 1rem;
+letter-spacing: .15rem;
+transition: all .3s;
+position: relative;
+overflow: hidden;
+color: #fff;
+z-index: 1;
+&:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0cf;
+  border-radius: 10rem;
+  z-index: -2;
+}
+&:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #097396;
+  transition: all .3s;
+  border-radius: 10rem;
+  z-index: -1;
+}
+&:hover {
+
+cursor:pointer;
+  &:before {
+    width: 100%;
+  }}
+
+`
+const Text = styled.p`
+font-size:150%;
 `;
-const Text = styled.h1``;
 const Image = styled.div`
 height:300px;
 width:300px;
+`;
+const Span = styled.span`
+font-size:160%;
 `;
 export default App;
